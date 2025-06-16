@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-scroll';
@@ -42,7 +42,7 @@ const Hero = () => {
                 View Projects
               </Link>
               <a
-              href="/images/Najiya-Nazrin-C-N-FlowCV-Resume-20250205-1.pdf"
+              href="./images/Najiya-Nazrin-C-N-FlowCV-Resume-20250205-1.pdf"
               download
               className="bg-brown-600 hover:bg-brown-700 text-white px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 cursor-pointer">
               Download Resume
@@ -58,7 +58,7 @@ const Hero = () => {
           >
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-brown-600">
               <img
-                src="/images/profile.png"
+                src="./images/profile.png"
                 
                 className="w-full h-full object-cover"
               />

@@ -7,51 +7,63 @@ interface Project {
   images: string[];
   tags: string[];
   date: string;
+  githubLink: string;
 }
 
 const Projects = () => {
-  // ✅ Properly typed state for active image indexes
   const [activeIndexes, setActiveIndexes] = useState<{ [key: number]: number }>({});
 
   const projects: Project[] = [
     {
       title: "Indian Ancient Language Preservation",
       description: "Developed a BERT-based website for Indian ancient language missing word prediction and preservation.",
-      images: ["/images/ancientlang.png"],
+      images: ["./images/ancient.jpeg","./images/ancientlang.png"],
       tags: ["BERT", "NLP", "Web Development"],
-      date: "January 2025"
+      date: "January 2025",
+      githubLink: "https://github.com/Najiya-Nazrin/ancient-language-preservation"
     },
     {
       title: "E-Commerce App",
       description: "Flutter based application that allows users to buy products online.",
-      images: ["/images/ecom1.png", "/images/ecom2.png", "/images/ecom3.png"],
+      images: ["./images/ecomm.png"],
       tags: ["Flutter", "Mobile Development", "E-commerce"],
-      date: "July 2024 – August 2024"
+      date: "July 2024 – August 2024",
+      githubLink:"https://github.com/Najiya-Nazrin/Flutter_Fly/tree/main/proj1"
+    },
+    {
+      title: "System Monitoring App",
+      description: "Flutter based application that helps to know the usage.",
+      images: ["./images/systmon.png"],
+      tags: ["Flutter", "Mobile Development", "E-commerce"],
+      date: "July 2024 – August 2024",
+      githubLink:"https://github.com/Najiya-Nazrin/system-monitoring-app"
     },
     {
       title: "EazyGo Map",
       description: "A mobile application that provides users with an easy way to report infrastructure issues.",
-      images: ["/images/eazygo1.png", "/images/eazygo2.png", "/images/eazygo3.png"],
+      images: ["./images/eazygo.png"],
       tags: ["Mobile Development", "Maps", "Infrastructure"],
-      date: "December 2022 – May 2025"
+      date: "December 2022 – May 2025",
+      githubLink:"https://github.com/aswin-asokan/EazyGo-MAp"
     },
     {
       title: "8 Queens Problem",
       description: "Implementation of the classic 8 Queens puzzle using advanced algorithms.",
-      images: ["/images/queen1.png", "/images/queen2.png", "/images/queen3.png"],
-      tags: ["Algorithms", "Problem Solving"],
-      date: "2024"
+      images: ["./images/8queens.png"],
+      tags: ["Backtracking", "Problem Solving"],
+      date: "2024",
+      githubLink:"https://github.com/Najiya-Nazrin/8-queen-puzzle"
     },
         {
       title: "Legal assistant",
       description: "Implementation of the classic 8 Queens puzzle using advanced algorithms.",
-      images: ["/images/legal1.png", "/images/legal2.png"],
+      images: ["./images/legal1.png", "./images/legal2.png"],
       tags: ["Algorithms", "Problem Solving"],
-      date: "2024"
+      date: "2024",
+      githubLink:"https://github.com/Najiya-Nazrin/legal-assistant"
     }
   ];
 
-  // ✅ Add type annotations for parameters
   const handleImageChange = (projectIndex: number, direction: number) => {
     setActiveIndexes((prevIndexes) => {
       const current = prevIndexes[projectIndex] || 0;
@@ -88,26 +100,17 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                className="bg-white rounded-2xl overflow-hidden shadow-md transition-transform duration-500 transform hover:scale-105 cursor-pointer"
+
               >
+                
                 <div className="relative">
                   <img
                     src={project.images[currentImageIndex]}
                     alt={`${project.title} screenshot ${currentImageIndex + 1}`}
                     className="w-full h-64 object-cover"
                   />
-                  <button
-                    onClick={() => handleImageChange(index, -1)}
-                    className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black bg-opacity-40 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70"
-                  >
-                    ‹
-                  </button>
-                  <button
-                    onClick={() => handleImageChange(index, 1)}
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black bg-opacity-40 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70"
-                  >
-                    ›
-                  </button>
+                  
                 </div>
 
                 <div className="p-6">
@@ -124,6 +127,15 @@ const Projects = () => {
                     ))}
                   </div>
                   <p className="text-brown-600 text-sm">{project.date}</p>
+                  <a
+  href={project.githubLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-sm text-black-600 underline mt-2 inline-block"
+>
+  GitHub
+</a>
+
                 </div>
               </motion.div>
             );
